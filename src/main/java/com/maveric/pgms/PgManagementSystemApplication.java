@@ -8,6 +8,8 @@ public class PgManagementSystemApplication {
 
 	public static void main(String[] args) {
 
+		SpringApplication.run(PgManagementSystemApplication.class, args);
+
 	}
 
 }

@@ -1,10 +1,19 @@
 package com.maveric.pgms.pojos;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.util.Objects;
 
+@Entity
 public class PayingGuest {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String fName;
     private String lName;
     private int age;
@@ -13,8 +22,20 @@ public class PayingGuest {
     private String email;
     private String address;
 
+    public PayingGuest() {}
+
     public PayingGuest(int id, String fName, String lName, int age, String gender, long contact, String email, String address) {
         this.id = id;
+        this.fName = fName;
+        this.lName = lName;
+        this.age = age;
+        this.gender = gender;
+        this.contact = contact;
+        this.email = email;
+        this.address = address;
+    }
+
+    public PayingGuest(String fName, String lName, int age, String gender, long contact, String email, String address) {
         this.fName = fName;
         this.lName = lName;
         this.age = age;

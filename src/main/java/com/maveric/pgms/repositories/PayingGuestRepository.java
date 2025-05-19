@@ -5,17 +5,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PayingGuestRepository {
+public interface PayingGuestRepository extends JpaRepository<PayingGuest, Integer> {
 
-    public interface CustomerRepository extends JpaRepository<PayingGuest, Integer> {
+    List<PayingGuest> findDetailsById(int id);
 
-        List<PayingGuest> findByAge(int age);
+    List<PayingGuest> findByAge(int age);
 
-        List<PayingGuest> findByGender(String gender);
+    List<PayingGuest> findAll();
 
-        PayingGuest findByFirstName(String firstName);
+    List<PayingGuest> findByGender(String gender);
 
-        PayingGuestRepository findByLastName(String lastName);
+    List<PayingGuest> findByfName(String fName);
 
-    }
+    List<PayingGuest> findBylName(String lName);
+
 }

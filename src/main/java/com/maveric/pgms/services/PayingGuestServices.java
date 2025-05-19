@@ -7,14 +7,18 @@ import java.util.List;
 
 public interface PayingGuestServices {
 
-    void acceptPayingGuest(PayingGuest payingGuest) throws PayingGuestDetailsNotFoundException;
+    PayingGuest acceptPayingGuest(PayingGuest payingGuest);
     void updatePayingGuestDetails(PayingGuest payingGuest) throws PayingGuestDetailsNotFoundException;
     void removePayingGuest(int id) throws PayingGuestDetailsNotFoundException;
 
-    PayingGuest getDetailsById(int id)throws PayingGuestDetailsNotFoundException;
+    List<PayingGuest> getDetailsById(int id)throws PayingGuestDetailsNotFoundException;
 
-    List<PayingGuest> getPayingGuestByFirstName(String fName) throws PayingGuestDetailsNotFoundException;
-    List<PayingGuest> getPayingGuestByLastName(String lName) throws PayingGuestDetailsNotFoundException;
+    List<PayingGuest> getAllGuests() throws PayingGuestDetailsNotFoundException;
 
+    List<PayingGuest> getPayingGuestByfName(String fName) throws PayingGuestDetailsNotFoundException;
+    List<PayingGuest> getPayingGuestBylName(String lName) throws PayingGuestDetailsNotFoundException;
+
+    List<PayingGuest> getDetailsByAge(int age)throws PayingGuestDetailsNotFoundException;
+    List<PayingGuest> getDetailsByGender(String gender) throws PayingGuestDetailsNotFoundException;
 
 }

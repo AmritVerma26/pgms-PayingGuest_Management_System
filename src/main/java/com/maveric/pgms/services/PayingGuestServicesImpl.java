@@ -9,15 +9,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service("payingGuest")
-
 public class PayingGuestServicesImpl implements PayingGuestServices {
 
     @Autowired
     PayingGuestRepository payingGuestRepository;
 
     @Override
-    public void acceptPayingGuest(PayingGuest payingGuest) throws PayingGuestDetailsNotFoundException {
-        return payingGuest.save(payingGuest);
+    public PayingGuest acceptPayingGuest(PayingGuest payingGuest){
+        return payingGuestRepository.save(payingGuest);
     }
 
     @Override
@@ -33,17 +32,47 @@ public class PayingGuestServicesImpl implements PayingGuestServices {
     }
 
     @Override
-    public PayingGuest getDetailsById(int id) throws PayingGuestDetailsNotFoundException {
-        return null;
+    public List<PayingGuest> getDetailsById(int id) throws PayingGuestDetailsNotFoundException {
+        List<PayingGuest> payingGuests = payingGuestRepository.findDetailsById(id);
+        if (payingGuests.isEmpty()) throw new PayingGuestDetailsNotFoundException("Guest with first name : " +id + " not found.");
+        return payingGuests;
     }
 
     @Override
-    public List<PayingGuest> getPayingGuestByFirstName(String fName) throws PayingGuestDetailsNotFoundException {
-        return List.of();
+    public List<PayingGuest> getAllGuests() throws PayingGuestDetailsNotFoundException {
+        List<PayingGuest> payingGuests = payingGuestRepository.findAll();
+        if (payingGuests.isEmpty()) throw new PayingGuestDetailsNotFoundException("Guest not found.");
+        return payingGuests;
+    }
+
+
+    @Override
+    public List<PayingGuest> getPayingGuestByfName(String fName) throws PayingGuestDetailsNotFoundException {
+        List<PayingGuest> payingGuests = payingGuestRepository.findByfName(fName);
+        if (payingGuests.isEmpty())
+            throw new PayingGuestDetailsNotFoundException("Guest with first name : " +fName + " not found.");
+        return payingGuests;
     }
 
     @Override
-    public List<PayingGuest> getPayingGuestByLastName(String lName) throws PayingGuestDetailsNotFoundException {
-        return List.of();
+    public List<PayingGuest> getPayingGuestBylName(String lName) throws PayingGuestDetailsNotFoundException {
+        List<PayingGuest> payingGuests = payingGuestRepository.findBylName(lName);
+        if (payingGuests.isEmpty())
+            throw new PayingGuestDetailsNotFoundException("Guest with last name : " +lName + " not found.");
+        return payingGuests;
+    }
+
+    @Override
+    public List<PayingGuest> getDetailsByAge(int age) {
+        List<PayingGuest> payingGuests = payingGuestRepository.findByAge(age);
+        if (payingGuests.isEmpty()) throw new PayingGuestDetailsNotFoundException("Guest with last name : " +age + " not found.");
+        return payingGuests;
+    }
+
+    @Override
+    public List<PayingGuest> getDetailsByGender(String gender) {
+        List<PayingGuest> payingGuests = payingGuestRepository.findByGender(gender);
+        if (payingGuests.isEmpty()) throw new PayingGuestDetailsNotFoundException("Guest with last name : " +gender + " not found.");
+        return payingGuests;
     }
 }
