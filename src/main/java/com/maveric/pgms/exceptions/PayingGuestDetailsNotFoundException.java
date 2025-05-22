@@ -1,6 +1,10 @@
 package com.maveric.pgms.exceptions;
 
-public class PayingGuestDetailsNotFoundException extends RuntimeException {
+public class PayingGuestDetailsNotFoundException extends Exception {
+    public PayingGuestDetailsNotFoundException() {
+        super();
+    }
+
     public PayingGuestDetailsNotFoundException(String message) {
         super(message);
     }
@@ -13,7 +17,7 @@ public class PayingGuestDetailsNotFoundException extends RuntimeException {
         super(cause);
     }
 
-    public PayingGuestDetailsNotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    protected PayingGuestDetailsNotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

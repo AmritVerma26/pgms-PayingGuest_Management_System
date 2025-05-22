@@ -15,8 +15,8 @@ public interface PayingGuestRepository extends JpaRepository<PayingGuest, Intege
 
     List<PayingGuest> findByGender(String gender);
 
-    List<PayingGuest> findByfName(String fName);
+    List<PayingGuest> findByFirstName(String fName);
 
-    List<PayingGuest> findBylName(String lName);
+    List<PayingGuest> findByLastName(String lName);
 
 }

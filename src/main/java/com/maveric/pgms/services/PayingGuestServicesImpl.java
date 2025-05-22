@@ -34,7 +34,7 @@ public class PayingGuestServicesImpl implements PayingGuestServices {
     @Override
     public List<PayingGuest> getDetailsById(int id) throws PayingGuestDetailsNotFoundException {
         List<PayingGuest> payingGuests = payingGuestRepository.findDetailsById(id);
-        if (payingGuests.isEmpty()) throw new PayingGuestDetailsNotFoundException("Guest with first name : " +id + " not found.");
+        if (payingGuests.isEmpty()) throw new PayingGuestDetailsNotFoundException("Guest with id : " +id + " not found.");
         return payingGuests;
     }
 
@@ -48,7 +48,7 @@ public class PayingGuestServicesImpl implements PayingGuestServices {
 
     @Override
     public List<PayingGuest> getPayingGuestByfName(String fName) throws PayingGuestDetailsNotFoundException {
-        List<PayingGuest> payingGuests = payingGuestRepository.findByfName(fName);
+        List<PayingGuest> payingGuests = payingGuestRepository.findByFirstName(fName);
         if (payingGuests.isEmpty())
             throw new PayingGuestDetailsNotFoundException("Guest with first name : " +fName + " not found.");
         return payingGuests;
@@ -56,23 +56,24 @@ public class PayingGuestServicesImpl implements PayingGuestServices {
 
     @Override
     public List<PayingGuest> getPayingGuestBylName(String lName) throws PayingGuestDetailsNotFoundException {
-        List<PayingGuest> payingGuests = payingGuestRepository.findBylName(lName);
+        List<PayingGuest> payingGuests = payingGuestRepository.findByLastName(lName);
         if (payingGuests.isEmpty())
             throw new PayingGuestDetailsNotFoundException("Guest with last name : " +lName + " not found.");
         return payingGuests;
     }
 
     @Override
-    public List<PayingGuest> getDetailsByAge(int age) {
+    public List<PayingGuest> getDetailsByAge(int age) throws PayingGuestDetailsNotFoundException {
         List<PayingGuest> payingGuests = payingGuestRepository.findByAge(age);
-        if (payingGuests.isEmpty()) throw new PayingGuestDetailsNotFoundException("Guest with last name : " +age + " not found.");
+        if (payingGuests.isEmpty())
+            throw new PayingGuestDetailsNotFoundException("Guest with last name : " +age + " not found.");
         return payingGuests;
     }
 
     @Override
-    public List<PayingGuest> getDetailsByGender(String gender) {
+    public List<PayingGuest> getDetailsByGender(String gender) throws PayingGuestDetailsNotFoundException {
         List<PayingGuest> payingGuests = payingGuestRepository.findByGender(gender);
-        if (payingGuests.isEmpty()) throw new PayingGuestDetailsNotFoundException("Guest with last name : " +gender + " not found.");
+        if (payingGuests.isEmpty()) throw new PayingGuestDetailsNotFoundException("Guest with gender : " +gender + " not found.");
         return payingGuests;
     }
 }

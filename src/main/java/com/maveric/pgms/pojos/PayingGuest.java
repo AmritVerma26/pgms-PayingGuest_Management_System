@@ -14,8 +14,8 @@ public class PayingGuest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String fName;
-    private String lName;
+    private String firstName;
+    private String lastName;
     private int age;
     private String gender;
     private long contact;
@@ -26,8 +26,8 @@ public class PayingGuest {
 
     public PayingGuest(int id, String fName, String lName, int age, String gender, long contact, String email, String address) {
         this.id = id;
-        this.fName = fName;
-        this.lName = lName;
+        this.firstName = fName;
+        this.lastName = lName;
         this.age = age;
         this.gender = gender;
         this.contact = contact;
@@ -36,8 +36,8 @@ public class PayingGuest {
     }
 
     public PayingGuest(String fName, String lName, int age, String gender, long contact, String email, String address) {
-        this.fName = fName;
-        this.lName = lName;
+        this.firstName = fName;
+        this.lastName = lName;
         this.age = age;
         this.gender = gender;
         this.contact = contact;
@@ -53,20 +53,20 @@ public class PayingGuest {
         this.id = id;
     }
 
-    public String getfName() {
-        return fName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getlName() {
-        return lName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setlName(String lName) {
-        this.lName = lName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public int getAge() {
@@ -113,20 +113,20 @@ public class PayingGuest {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         PayingGuest that = (PayingGuest) o;
-        return id == that.id && age == that.age && contact == that.contact && Objects.equals(fName, that.fName) && Objects.equals(lName, that.lName) && Objects.equals(gender, that.gender) && Objects.equals(email, that.email) && Objects.equals(address, that.address);
+        return id == that.id && age == that.age && contact == that.contact && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(gender, that.gender) && Objects.equals(email, that.email) && Objects.equals(address, that.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fName, lName, age, gender, contact, email, address);
+        return Objects.hash(id, firstName, lastName, age, gender, contact, email, address);
     }
 
     @Override
     public String toString() {
         return "PayingGuest{" +
                 "id=" + id +
-                ", fName='" + fName + '\'' +
-                ", lName='" + lName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
                 ", contact=" + contact +
@@ -135,3 +135,4 @@ public class PayingGuest {
                 '}';
     }
 }
+
