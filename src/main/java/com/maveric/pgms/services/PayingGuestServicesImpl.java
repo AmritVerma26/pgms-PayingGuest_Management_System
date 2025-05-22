@@ -45,7 +45,6 @@ public class PayingGuestServicesImpl implements PayingGuestServices {
         return payingGuests;
     }
 
-
     @Override
     public List<PayingGuest> getPayingGuestByfName(String fName) throws PayingGuestDetailsNotFoundException {
         List<PayingGuest> payingGuests = payingGuestRepository.findByFirstName(fName);
