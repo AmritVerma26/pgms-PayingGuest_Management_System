@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.*;
 
 import java.util.Objects;
 
@@ -14,17 +15,38 @@ public class PayingGuest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull(message = "First Name is Mandatory")
+    @Size(min = 1, message = "First Name must not be empty")
     private String firstName;
+
+    @NotNull(message = "Last Name is Mandatory")
+    @Size(min = 1, message = "Last Name must not be empty")
     private String lastName;
+
+    @NotNull(message = "Age is Mandatory")
+    @Min(value = 18, message = "Age must be equal to or greater than 18.")
+    @Max(value = 80, message = "Age must not be greater than 80.")
     private int age;
+
+    @NotNull(message = "Gender is mandatory.")
     private String gender;
-    private long contact;
+
+    @NotNull(message = "Contact is mandatory.")
+//    @Pattern(regexp = "^[+\\-\\d]*$", message = "Contact can only contain numbers, +, and -.")
+//    @Size(min = 1, message = "Contact must not be empty. ")
+    private int contact;
+
+    @NotNull(message = "Email is mandatory.")
+    @Email(message = "Email should be valid.")
     private String email;
+
+    @NotNull(message = "Address is Mandatory.")
+    @Size(min = 1, message = "Address must not be empty.")
     private String address;
 
     public PayingGuest() {}
 
-    public PayingGuest(int id, String fName, String lName, int age, String gender, long contact, String email, String address) {
+    public PayingGuest(int id, String fName, String lName, int age, String gender, int contact, String email, String address) {
         this.id = id;
         this.firstName = fName;
         this.lastName = lName;
@@ -35,7 +57,7 @@ public class PayingGuest {
         this.address = address;
     }
 
-    public PayingGuest(String fName, String lName, int age, String gender, long contact, String email, String address) {
+    public PayingGuest(String fName, String lName, int age, String gender, int contact, String email, String address) {
         this.firstName = fName;
         this.lastName = lName;
         this.age = age;
@@ -89,7 +111,7 @@ public class PayingGuest {
         return contact;
     }
 
-    public void setContact(long contact) {
+    public void setContact(int contact) {
         this.contact = contact;
     }
 

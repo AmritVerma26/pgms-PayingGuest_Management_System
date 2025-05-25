@@ -20,9 +20,9 @@ public class PayingGuestServicesImpl implements PayingGuestServices {
     }
 
     @Override
-    public void updatePayingGuestDetails(PayingGuest payingGuest) throws PayingGuestDetailsNotFoundException {
+    public PayingGuest updatePayingGuestDetails(PayingGuest payingGuest) throws PayingGuestDetailsNotFoundException {
         this.getDetailsById(payingGuest.getId());
-        payingGuestRepository.save(payingGuest);
+        return payingGuestRepository.save(payingGuest);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class PayingGuestServicesImpl implements PayingGuestServices {
     public List<PayingGuest> getDetailsByAge(int age) throws PayingGuestDetailsNotFoundException {
         List<PayingGuest> payingGuests = payingGuestRepository.findByAge(age);
         if (payingGuests.isEmpty())
-            throw new PayingGuestDetailsNotFoundException("Guest with last name : " +age + " not found.");
+            throw new PayingGuestDetailsNotFoundException("Guest with age : " +age + " not found.");
         return payingGuests;
     }
 

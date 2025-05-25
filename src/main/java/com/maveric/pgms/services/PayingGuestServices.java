@@ -8,7 +8,7 @@ import java.util.List;
 public interface PayingGuestServices {
 
     PayingGuest acceptPayingGuest(PayingGuest payingGuest);
-    void updatePayingGuestDetails(PayingGuest payingGuest) throws PayingGuestDetailsNotFoundException;
+    PayingGuest updatePayingGuestDetails(PayingGuest payingGuest) throws PayingGuestDetailsNotFoundException;
     void removePayingGuest(int id) throws PayingGuestDetailsNotFoundException;
 
     List<PayingGuest> getDetailsById(int id)throws PayingGuestDetailsNotFoundException;
