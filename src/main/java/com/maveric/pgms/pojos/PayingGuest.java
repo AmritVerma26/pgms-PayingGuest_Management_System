@@ -32,9 +32,9 @@ public class PayingGuest {
     private String gender;
 
     @NotNull(message = "Contact is mandatory.")
-//    @Pattern(regexp = "^[+\\-\\d]*$", message = "Contact can only contain numbers, +, and -.")
-//    @Size(min = 1, message = "Contact must not be empty. ")
-    private int contact;
+    @Min(value = 1000000000, message = "Contact must be a 10-digit number.")
+    @Max(value = 9999999999L, message = "Contact must be a 10-digit number.")
+    private long contact;
 
     @NotNull(message = "Email is mandatory.")
     @Email(message = "Email should be valid.")
@@ -46,7 +46,7 @@ public class PayingGuest {
 
     public PayingGuest() {}
 
-    public PayingGuest(int id, String fName, String lName, int age, String gender, int contact, String email, String address) {
+    public PayingGuest(int id, String fName, String lName, int age, String gender, long contact, String email, String address) {
         this.id = id;
         this.firstName = fName;
         this.lastName = lName;
@@ -57,7 +57,7 @@ public class PayingGuest {
         this.address = address;
     }
 
-    public PayingGuest(String fName, String lName, int age, String gender, int contact, String email, String address) {
+    public PayingGuest(String fName, String lName, int age, String gender, long contact, String email, String address) {
         this.firstName = fName;
         this.lastName = lName;
         this.age = age;
@@ -111,7 +111,7 @@ public class PayingGuest {
         return contact;
     }
 
-    public void setContact(int contact) {
+    public void setContact(long contact) {
         this.contact = contact;
     }
 

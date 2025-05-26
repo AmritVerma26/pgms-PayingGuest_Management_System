@@ -20,7 +20,7 @@ public class PayingGuestController {
 
     //create customer
     @PostMapping(value = "/v1/payingGuest" , consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PayingGuest> acceptPayingGuest(@RequestBody PayingGuest guestToBeInsert) {
+    public ResponseEntity<PayingGuest> acceptPayingGuest(@Valid @RequestBody PayingGuest guestToBeInsert) {
         return new ResponseEntity<>(payingGuestServices.acceptPayingGuest(guestToBeInsert), HttpStatus.CREATED);
     }
 

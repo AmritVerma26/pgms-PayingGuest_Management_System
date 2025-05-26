@@ -15,11 +15,14 @@ import java.util.Map;
 @ControllerAdvice
 public class PayingGuestExceptionHandler {
 
+    // Custom exception handler for PayingGuestDetailsNotFoundException
     @ExceptionHandler(PayingGuestDetailsNotFoundException.class)
     public ResponseEntity<String> handlePayingGuestNotFoundException(PayingGuestDetailsNotFoundException e) {
         ResponseEntity<String> responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         return responseEntity;
     }
+
+    // Validation error handler for MethodArgumentNotValidException
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationErrors(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
